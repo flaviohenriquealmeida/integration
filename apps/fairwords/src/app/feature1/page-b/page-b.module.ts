@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { PageAComponent } from './page-a.component';
+import { PageBComponent } from './page-b.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [PageAComponent],
-  exports: [PageAComponent],
+  declarations: [PageBComponent],
+  exports: [PageBComponent],
   imports: [CommonModule, RouterModule]
 })
-export class PageAModule {}
+export class PageBModule {}

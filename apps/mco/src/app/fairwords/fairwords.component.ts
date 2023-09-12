@@ -18,22 +18,10 @@ export class FairwordsComponent {
     private sanitizer: DomSanitizer,
   ) {
     this.src = this.getRoute(location.path());
-    // remove once integration step 2 is done
-    this.simulateIframePostMessage();
   }
 
   handleNavigation(event: IFrameEventData) {
-    event.data && this.location.go('fairwords/' + event.data);
-  }
-
-  // to be removed
-  simulateIframePostMessage(): void {
-      setTimeout(() => {
-        window.top?.postMessage(
-          { event: 'navigation', data: 'page2' },
-          'http://localhost:4200'
-        );
-      }, 10000);
+    event.data && this.location.go('fairwords' + event.data);
   }
 
   private getRoute(path: string): SafeUrl {
