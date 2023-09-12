@@ -1,0 +1,22 @@
+<h1>MCO</h1>
+<p>Let's pretend that the page container for the iframe is MCO and the iframe will display the content from another angular project (also pretending to be Fairwords). The iframe has a border just to make clear its content area.</p>
+<!--
+<ul>
+  <li>everything after /fairwords route is the URL that will be used in the iframe. This will allow mapping MCO routes to specific fairwords pages</li>
+  <li>Fairwords will fire message event whenever it handles navigation. The mcoIFrame directive
+    will listen and will extract from the event the route from fairwords. This route will be
+    added in MCO main route (no navigation will be triggered, it will only a URL change). We
+    want to keep the two routes in sync. This will allow the refreshing of the page and also
+    anything generate from MCO to open the correct page with the parameters from fairwords system
+  </li>
+  <li>The intial value from the iframe src will be the path segment after fairwords</li>
+</ul>
+-->
+<section class="container">
+  <iframe
+    [src]="src"
+    mcoIframe
+    [acceptedDomain]="fairwordsDomain"
+    (dataReceived)="handleNavigation($event)"
+  ></iframe>
+</section>

@@ -1,3 +1,8 @@
-import { Route } from '@angular/router';
+import { Routes } from '@angular/router';
 
-export const appRoutes: Route[] = [];
+export const appRoutes: Routes = [
+  {
+    path: 'fairwords',
+    loadChildren: () => import('apps/mco/src/app/fairwords/fairwords.module').then(m => m.FairwordsModule )
+  }
+];
