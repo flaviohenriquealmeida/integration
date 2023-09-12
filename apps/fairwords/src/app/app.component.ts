@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'integration-root',
+  selector: 'fairwords-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

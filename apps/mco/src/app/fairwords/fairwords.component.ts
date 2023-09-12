@@ -11,7 +11,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class FairwordsComponent {
   src: SafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('');
-  fairwordsDomain = 'https://localhost:4201'; // might come from injection token, config etc
+  fairwordsDomain = 'http://localhost:4201'; // might come from injection token, config etc
 
   constructor(
     private location: Location,
@@ -38,6 +38,7 @@ export class FairwordsComponent {
 
   private getRoute(path: string): SafeUrl {
       const segments = path.split('/');
+      segments.shift();
       segments.shift();
       const url = `${this.fairwordsDomain}/${segments.join('/')}`
       return this.sanitizer.bypassSecurityTrustResourceUrl(url);

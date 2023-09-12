@@ -6,9 +6,9 @@ import { FairwordsComponent } from './fairwords.component';
 import { IFrameModule } from '../shared/directives/iframe.module';
 
 const routes: Route[] = [
-  { path: 'page1', component: FairwordsComponent },
-  { path: 'page2', component: FairwordsComponent },
-  { path: 'page3', component: FairwordsComponent }
+  { path: 'feature1/page-a', component: FairwordsComponent },
+  { path: 'feature1/page-b', component: FairwordsComponent },
+  { path: 'feature1/page-c', component: FairwordsComponent }
 ]
 @NgModule({
   declarations: [FairwordsComponent],
