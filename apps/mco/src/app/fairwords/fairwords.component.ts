@@ -21,14 +21,12 @@ export class FairwordsComponent {
   }
 
   handleNavigation(event: IFrameEventData) {
-    event.data && this.location.go('fairwords' + event.data);
+    event.data && this.location.replaceState('fairwords' + event.data);
   }
 
   private getRoute(path: string): SafeUrl {
-      const segments = path.split('/');
-      segments.shift();
-      segments.shift();
-      const url = `${this.fairwordsDomain}/${segments.join('/')}`
-      return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+      const segment = path.split('/').slice(2).join('/');
+      return this.sanitizer
+        .bypassSecurityTrustResourceUrl(`${this.fairwordsDomain}/${segment}`);
   }
 }
