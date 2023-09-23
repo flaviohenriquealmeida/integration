@@ -2,9 +2,10 @@
 <p>Let's pretend that the page container for the iframe is MCO and the iframe will display the content from another angular project (also pretending to be Fairwords). The iframe has a border just to make clear its content area.</p>
 <section class="container">
   <iframe
+    allow-scripts
     [src]="src"
-    mcoIframe
     [acceptedDomain]="fairwordsDomain"
+    mcoIframe
     (dataReceived)="handleNavigation($event)"
   ></iframe>
 </section>

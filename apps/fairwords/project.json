@@ -20,7 +20,7 @@
           "apps/fairwords/src/assets"
         ],
         "styles": ["apps/fairwords/src/styles.scss"],
-        "scripts": []
+        "scripts": ["node_modules/iframe-resizer/js/iframeResizer.contentWindow.js"]
       },
       "configurations": {
         "production": {

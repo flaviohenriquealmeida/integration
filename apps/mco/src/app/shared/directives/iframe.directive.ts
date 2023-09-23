@@ -1,6 +1,7 @@
-import { Directive, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Subject, fromEvent, takeUntil, filter } from 'rxjs';
 import { IFrameEventData } from './iframe-event-data';
+import * as iframeResizer from 'iframe-resizer';
 
 @Directive({
   selector: '[mcoIframe]'
@@ -11,7 +12,9 @@ export class IFrameDirective implements OnDestroy{
   private unsubscribe = new Subject<void>();
 
 
-  constructor() {
+  constructor(private elementRef: ElementRef<HTMLIFrameElement>) {
+    elementRef.nativeElement.width = '100%';
+    iframeResizer.iframeResizer({ log: true, checkOrigin: false }, this.elementRef.nativeElement);
     if (!window.top) { return }
       fromEvent<IFrameEvent>(window.top, 'message')
         .pipe(takeUntil(this.unsubscribe))

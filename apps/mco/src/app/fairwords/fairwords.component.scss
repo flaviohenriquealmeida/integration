@@ -1,4 +1,4 @@
-.container {
+.xcontainer {
   min-height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
@@ -7,4 +7,8 @@
     width: 100%;
     height: 100%;
   }
+}
+iframe {
+  width: 1px;
+  min-width: 100%;
 }
