@@ -13,7 +13,6 @@ export class IFrameDirective implements OnDestroy{
 
 
   constructor(private elementRef: ElementRef<HTMLIFrameElement>) {
-    elementRef.nativeElement.width = '100%';
     iframeResizer.iframeResizer({ log: true, checkOrigin: false }, this.elementRef.nativeElement);
     if (!window.top) { return }
       fromEvent<IFrameEvent>(window.top, 'message')

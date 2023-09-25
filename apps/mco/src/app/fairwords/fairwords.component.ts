@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 import { IFrameEventData } from '../shared/directives/iframe-event-data';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { FairwordsIntegrationData } from './services/interfaces/fairwords.integration.data';
 
 @Component({
   selector: 'mco-fairwords',
@@ -11,12 +13,14 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class FairwordsComponent {
   src: SafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('');
-  fairwordsDomain = 'http://localhost:4201'; // might come from injection token, config etc
+  integrationData: FairwordsIntegrationData = { domain: '', token: '' };
 
   constructor(
+    private route: ActivatedRoute,
     private location: Location,
     private sanitizer: DomSanitizer,
   ) {
+    this.integrationData  = this.route.snapshot.data['integrationData'] as FairwordsIntegrationData;
     this.src = this.getRoute(location.path());
   }
 
@@ -27,6 +31,6 @@ export class FairwordsComponent {
   private getRoute(path: string): SafeUrl {
       const segment = path.split('/').slice(2).join('/');
       return this.sanitizer
-        .bypassSecurityTrustResourceUrl(`${this.fairwordsDomain}/${segment}`);
+        .bypassSecurityTrustResourceUrl(`${this.integrationData.domain}/${segment}?token=${this.integrationData.token}`);
   }
 }

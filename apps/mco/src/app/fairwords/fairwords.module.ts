@@ -4,11 +4,15 @@ import { Route, RouterModule } from '@angular/router';
 
 import { FairwordsComponent } from './fairwords.component';
 import { IFrameModule } from '../shared/directives/iframe.module';
+import { FairwordsService } from './services/fairwords.service';
+import { fairwordsResolver } from './resolvers/fairwords.resolver';
 
 const routes: Route[] = [
-  { path: 'feature1/page-a', component: FairwordsComponent },
-  { path: 'feature1/page-b', component: FairwordsComponent },
-  { path: 'feature1/page-c', component: FairwordsComponent }
+  {
+    path: '**',
+    component: FairwordsComponent,
+    resolve: { integrationData: fairwordsResolver }
+  },
 ]
 @NgModule({
   declarations: [FairwordsComponent],
@@ -17,6 +21,7 @@ const routes: Route[] = [
     CommonModule,
     IFrameModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  providers: [FairwordsService]
 })
 export class FairwordsModule {}

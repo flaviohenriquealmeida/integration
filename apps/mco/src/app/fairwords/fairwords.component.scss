@@ -1,14 +1,7 @@
-.xcontainer {
-  min-height: calc(100vh - 120px);
-  display: flex;
-  flex-direction: column;
-  iframe {
-    flex: 1;
-    width: 100%;
-    height: 100%;
-  }
-}
 iframe {
   width: 1px;
   min-width: 100%;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
