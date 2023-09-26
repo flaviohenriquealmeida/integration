@@ -25,7 +25,14 @@ export class FairwordsComponent {
   }
 
   handleNavigation(event: IFrameEventData) {
-    event.data && this.location.replaceState('fairwords' + event.data);
+    if (event.data) {
+      // we don't want to include the token in the MCO URL
+      if (event.data.includes('?token')) {
+        return ;
+      }
+      event.data && this.location.replaceState('fairwords' + event.data);
+    }
+
   }
 
   private getRoute(path: string): SafeUrl {

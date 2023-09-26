@@ -10,7 +10,8 @@ import { filter, map } from 'rxjs';
 export class AppComponent {
   title = 'fairwords';
   // this need to come from a config, because we can have fairwords
-  // used by two MCO Saas deployed in a different domain
+  // used by two MCO Saas deployed in a different domain. Should this come
+  // with the token or should be a new config that fairwords?
   messageDestination = 'http://localhost:4200'
 
   constructor(private router: Router) {

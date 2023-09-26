@@ -13,7 +13,7 @@ export class IFrameDirective implements OnDestroy{
   private unsubscribe = new Subject<void>();
 
   constructor(private elementRef: ElementRef<HTMLIFrameElement>) {
-    iframeResizer.iframeResizer({ log: true, checkOrigin: false }, this.elementRef.nativeElement);
+    iframeResizer.iframeResizer({ log: false, checkOrigin: false }, this.elementRef.nativeElement);
     if (!window.top) { return }
       fromEvent<IFrameEvent>(window.top, 'message')
         .pipe(takeUntil(this.unsubscribe))
